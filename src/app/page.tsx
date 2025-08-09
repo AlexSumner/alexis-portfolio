@@ -1,103 +1,132 @@
-import Image from "next/image";
+import Section from "@/components/Section";
+import SkillBadge from "@/components/SkillBadge";
+import Footer from "@/components/Footer";
+import ThemeToggle from "@/components/ThemeToggle";
+import { skills } from "@/data/skills";
+import { experience } from "@/data/experience";
+import { education } from "@/data/education";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main className="mx-auto max-w-5xl px-4">
+      {/* Héroe */}
+      <Section title="Hola, soy Alexis Araujo">
+        <div className="flex items-center justify-between">
+          <p className="max-w-2xl text-zinc-700 dark:text-zinc-300">
+            Desarrollador Fullstack (React · Next.js · Node.js · Prisma).
+            Construyo interfaces claras y APIs robustas.
+          </p>
+          <ThemeToggle />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+      </Section>
+
+      {/* Sobre mí */}
+      <Section title="Sobre mí">
+        <p className="text-zinc-700 dark:text-zinc-300">
+          Me apasiona la programación y el aprendizaje continuo. Trabajo en
+          proyectos web fullstack y también colaboro en áreas de marketing y
+          ventas cuando el proyecto lo necesita.
+        </p>
+      </Section>
+
+      {/* Habilidades técnicas */}
+      <Section title="Habilidades técnicas">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+          <div>
+            <h3 className="mb-2 font-medium">Frontend</h3>
+            <div className="flex flex-wrap gap-2">
+              {skills.frontend.map((s) => (
+                <SkillBadge key={s}>{s}</SkillBadge>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h3 className="mb-2 font-medium">Backend</h3>
+            <div className="flex flex-wrap gap-2">
+              {skills.backend.map((s) => (
+                <SkillBadge key={s}>{s}</SkillBadge>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h3 className="mb-2 font-medium">Herramientas</h3>
+            <div className="flex flex-wrap gap-2">
+              {skills.tools.map((s) => (
+                <SkillBadge key={s}>{s}</SkillBadge>
+              ))}
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Experiencia */}
+      <Section title="Experiencia">
+        <ul className="space-y-4">
+          {experience.map((item) => (
+            <li
+              key={item.role}
+              className="rounded-2xl border p-4 dark:border-zinc-800"
+            >
+              <div className="flex items-center justify-between">
+                <p className="font-medium">
+                  {item.role} · {item.company}
+                </p>
+                <span className="text-xs text-zinc-500">{item.period}</span>
+              </div>
+              <ul className="mt-2 list-disc pl-5 text-sm text-zinc-700 dark:text-zinc-300">
+                {item.bullets.map((b) => (
+                  <li key={b}>{b}</li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      {/* Formación */}
+      <Section title="Formación">
+        <ul className="space-y-2 text-sm">
+          {education.map((e) => (
+            <li
+              key={e.title}
+              className="flex items-center justify-between rounded-xl border p-3 dark:border-zinc-800"
+            >
+              <span>
+                {e.title} – {e.place}
+              </span>
+              <span className="text-xs text-zinc-500">{e.year}</span>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      {/* Contacto */}
+      <Section id="contacto" title="Contacto">
+        <form action="/api/contact" method="post" className="space-y-3">
+          <input
+            name="nombre"
+            placeholder="Nombre"
+            className="w-full rounded-xl border p-3 dark:border-zinc-800"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            className="w-full rounded-xl border p-3 dark:border-zinc-800"
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
+          <textarea
+            name="mensaje"
+            placeholder="Mensaje"
+            className="w-full rounded-xl border p-3 dark:border-zinc-800"
+            rows={5}
           />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          <button className="rounded-xl border px-4 py-2 hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-900">
+            Enviar
+          </button>
+        </form>
+      </Section>
+
+      <Footer />
+    </main>
   );
 }
