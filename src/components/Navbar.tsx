@@ -14,6 +14,7 @@ export default function Navbar() {
           <a href="#contacto" className="hover:underline">
             Contacto
           </a>
+          <Link href="/IA">IA</Link>
           <a
             href="/CV_Alexis_Araujo_Desarrollador.pdf"
             className="hover:underline"
