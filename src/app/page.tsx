@@ -6,9 +6,25 @@ import { skills } from "@/data/skills";
 import { experience } from "@/data/experience";
 import { education } from "@/data/education";
 
-export default function HomePage() {
+type SearchParams = { sent?: string };
+
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<SearchParams>;
+}) {
+  const { sent } = await searchParams; // leemos ?sent=1
+  const showThanks = sent === "1";
+
   return (
     <main className="mx-auto max-w-5xl px-4">
+      {/* Aviso de éxito */}
+      {showThanks && (
+        <div className="mt-4 mb-6 rounded-lg border p-3 text-sm bg-green-50 border-green-200 text-green-800">
+          ¡Gracias por tu mensaje! Te responderé a la brevedad.
+        </div>
+      )}
+
       {/* Héroe */}
       <Section title="Hola, soy Alexis Araujo">
         <div className="flex items-center justify-between">
