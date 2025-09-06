@@ -2,8 +2,13 @@
 
 /* Tokens opcionales */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f5f3ff;
+  --foreground: #2e1065;
+}
+
+.dark {
+    --background: #2e1065;
+    --foreground: #f5f3ff;
 }
 
 @theme inline {
@@ -16,4 +21,6 @@
 /* Si querés, solo la fuente global; no setees color/fondo acá */
 body {
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
 }

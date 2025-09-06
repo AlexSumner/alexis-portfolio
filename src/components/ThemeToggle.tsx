@@ -1,20 +1,23 @@
 "use client";
+
 import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 
 export default function ThemeToggle() {
-  const [dark, setDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme();
 
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", dark);
-  }, [dark]);
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return null;
 
   return (
     <button
-      className="rounded-lg border px-3 py-2 text-sm hover:bg-zinc-100 dark:border-zinc-800 dark:hover:bg-zinc-900"
-      onClick={() => setDark((v) => !v)}
+      className="rounded-lg border border-violet-200 px-3 py-2 text-sm hover:bg-violet-100 dark:border-violet-800 dark:hover:bg-violet-900"
+      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
       aria-label="Cambiar tema"
     >
-      {dark ? "☾" : "☀"}
+      {resolvedTheme === "dark" ? "☾" : "☀"}
     </button>
   );
 }

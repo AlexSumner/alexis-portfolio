@@ -8,8 +8,8 @@ export default function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="py-12">
-      <h2 className="mb-6 text-2xl font-bold tracking-tight">{title}</h2>
+    <section id={id} className="py-16">
+      <h2 className="font-lora mb-6 text-3xl font-bold tracking-tight">{title}</h2>
       {children}
     </section>
   );

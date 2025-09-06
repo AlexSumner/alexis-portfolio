@@ -4,7 +4,7 @@ export default function SkillBadge({
   children: React.ReactNode;
 }) {
   return (
-    <span className="rounded-full bg-zinc-100 px-2 py-1 text-xs dark:bg-zinc-800">
+    <span className="rounded-full bg-violet-100 px-2 py-1 text-xs text-violet-800 dark:bg-violet-800 dark:text-violet-100">
       {children}
     </span>
   );

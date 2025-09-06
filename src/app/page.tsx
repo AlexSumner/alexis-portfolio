@@ -28,17 +28,17 @@ export default async function HomePage({
       {/* Héroe */}
       <Section title="Hola, soy Alexis Araujo">
         <div className="flex items-center justify-between">
-          <p className="max-w-2xl text-zinc-700 dark:text-zinc-300">
+          <p className="max-w-2xl text-violet-900 dark:text-violet-100">
             Desarrollador Fullstack (React · Next.js · Node.js · Prisma).
             Construyo interfaces claras y APIs robustas.
           </p>
-          <ThemeToggle />
+          
         </div>
       </Section>
 
       {/* Sobre mí */}
       <Section title="Sobre mí">
-        <p className="text-zinc-700 dark:text-zinc-300">
+        <p className="text-violet-900 dark:text-violet-100">
           Me apasiona la programación y el aprendizaje continuo. Trabajo en
           proyectos web fullstack y también colaboro en áreas de marketing y
           ventas cuando el proyecto lo necesita.
@@ -81,7 +81,7 @@ export default async function HomePage({
           {experience.map((item) => (
             <li
               key={item.role}
-              className="rounded-2xl border p-4 dark:border-zinc-800"
+              className="rounded-2xl border border-violet-200/50 p-4 shadow-sm shadow-violet-200/50 transition-all hover:scale-[1.02] dark:border-violet-800/50 dark:shadow-violet-800/50"
             >
               <div className="flex items-center justify-between">
                 <p className="font-medium">
@@ -105,7 +105,7 @@ export default async function HomePage({
           {education.map((e) => (
             <li
               key={e.title}
-              className="flex items-center justify-between rounded-xl border p-3 dark:border-zinc-800"
+              className="flex items-center justify-between rounded-xl border border-violet-200/50 p-3 shadow-sm shadow-violet-200/50 transition-all hover:scale-[1.02] dark:border-violet-800/50 dark:shadow-violet-800/50"
             >
               <span>
                 {e.title} – {e.place}
@@ -122,21 +122,21 @@ export default async function HomePage({
           <input
             name="nombre"
             placeholder="Nombre"
-            className="w-full rounded-xl border p-3 dark:border-zinc-800"
+            className="w-full rounded-xl border p-3 border-violet-200 dark:border-violet-800"
           />
           <input
             name="email"
             type="email"
             placeholder="Email"
-            className="w-full rounded-xl border p-3 dark:border-zinc-800"
+            className="w-full rounded-xl border p-3 border-violet-200 dark:border-violet-800"
           />
           <textarea
             name="mensaje"
             placeholder="Mensaje"
-            className="w-full rounded-xl border p-3 dark:border-zinc-800"
+            className="w-full rounded-xl border p-3 border-violet-200 dark:border-violet-800"
             rows={5}
           />
-          <button className="rounded-xl border px-4 py-2 hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-900">
+          <button className="rounded-xl border px-4 py-2 hover:bg-violet-100 border-violet-200 dark:border-violet-800 dark:hover:bg-violet-900">
             Enviar
           </button>
         </form>
